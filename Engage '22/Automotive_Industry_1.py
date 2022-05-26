@@ -25,11 +25,15 @@ st.markdown("""
             """)
 
 #To cache the data
-@st.cache
+@st.cache(suppress_st_warning=True)
 def data_analysis():
     #reading the csv file
-    microsoft_data = pd.read_csv("C:/Users/skuma/Desktop/Engage '22/cars_engage_2022.csv")
-    microsoft_data = pd.DataFrame(microsoft_data)
+    microsoft_data = pd.read_csv("C:/Users/skuma\Desktop\Engage '22\cars_engage_2022.csv")
+    uploaded_file = st.file_uploader("Choose a file")
+    if uploaded_file is not None:
+        microsoft_data = pd.read_csv(uploaded_file)
+        st.write(microsoft_data)
+    return microsoft_data
     return microsoft_data
 
 microsoft_data=data_analysis()
