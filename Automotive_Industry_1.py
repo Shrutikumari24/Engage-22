@@ -25,7 +25,7 @@ st.markdown("""
 @st.cache
 def data_analysis():
     #reading the csv file
-    microsoft_data = pd.read_csv("C:/Users/skuma/Downloads/cars_engage_2022.csv")
+    microsoft_data = pd.read_csv("cars_engage_2022.csv")
     microsoft_data = pd.DataFrame(microsoft_data)
     #dropping the 1st unnamed column
     microsoft_data = microsoft_data.drop(microsoft_data.iloc[:,[0]], axis=1)
