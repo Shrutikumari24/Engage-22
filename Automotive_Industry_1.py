@@ -237,6 +237,7 @@ if check:
 st.markdown('##')
 col3, col4=st.columns([2.2,1])
 col4.markdown("""
+            **_Application Made by_**
             * **Name:** Shruti Kumari
             * **Email:** skumari242000@gmail.com
             """)
