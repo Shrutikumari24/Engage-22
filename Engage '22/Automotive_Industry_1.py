@@ -28,66 +28,69 @@ st.markdown("""
 @st.cache
 def data_analysis():
     #reading the csv file
-    microsoft_data = pd.read_csv("C:/Users/skuma/Downloads/cars_engage_2022.csv")
+    microsoft_data = pd.read_csv("C:/Users/skuma/Desktop/Engage '22/cars_engage_2022.csv")
     microsoft_data = pd.DataFrame(microsoft_data)
-    #dropping the 1st unnamed column
-    microsoft_data = microsoft_data.drop(microsoft_data.iloc[:,[0]], axis=1)
-    #checking total null values in the data
-    print(microsoft_data.isnull().sum())
-
-    #dropping those columns which do not have 50% of data
-    threshold = len(microsoft_data)*0.5
-    microsoft_data.dropna(thresh=threshold, axis=1, inplace=True)
-    #dropping the rows which do not have Company name
-    microsoft_data = microsoft_data.dropna(subset=['Make'])
-
-    #adding an extra column named Car
-    microsoft_data['Car']=microsoft_data['Make']+' '+microsoft_data['Model']
-    car = microsoft_data['Car']
-    microsoft_data = microsoft_data.drop(columns=['Car'])
-    microsoft_data.insert(loc=2, column='Car', value=car)
-    
-    #cleaning data
-    microsoft_data['Ex-Showroom_Price'] = microsoft_data['Ex-Showroom_Price'].str.replace('Rs. ','').str.replace(',','').astype(float)
-    microsoft_data['Height'] = microsoft_data['Height'].str.replace(' mm','',regex=False).astype(float)
-    microsoft_data['Length'] = microsoft_data['Length'].str.replace(' mm','',regex=False).astype(float)
-    microsoft_data['Width'] = microsoft_data['Width'].str.replace(' mm','',regex=False).astype(float)
-    microsoft_data['Wheelbase'] = microsoft_data['Wheelbase'].str.replace(' mm','',regex=False).astype(float)
-    microsoft_data['Fuel_Tank_Capacity'] = microsoft_data['Fuel_Tank_Capacity'].str.replace(' litres','',regex=False).astype(float)
-    microsoft_data['Displacement'] = microsoft_data['Displacement'].str.replace(' cc','',regex=False).astype(float)
-    microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '9.8-10.0 km/litre','ARAI_Certified_Mileage'] = '10'
-    microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '10kmpl km/litre','ARAI_Certified_Mileage'] = '10'
-    microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '22.4-21.9 km/litre','ARAI_Certified_Mileage'] = '22.4'
-    microsoft_data['ARAI_Certified_Mileage'] = microsoft_data['ARAI_Certified_Mileage'].str.replace(' km/litre','',regex=False).astype(float)
-    microsoft_data['Basic_Warranty'] = microsoft_data['Basic_Warranty'].str.replace('(years/distance whichever comes first)','').str.replace('(Whichever comes earlier)','').str.replace('(whichever is earlier)','').str.replace('(whichever comes first)','')
-    microsoft_data['Basic_Warranty']=microsoft_data['Basic_Warranty'].str.replace('(','').str.replace(')','')
-    microsoft_data.rename(columns = {'Ex-Showroom_Price':'Ex-Showroom_Price (in Rs.)', 'Height':'Height (in mm)', 'Length':'Length (in mm)', 'Width':'Width (in mm)', 'Wheelbase':'Wheelbase (in mm)', 'Fuel_Tank_Capacity':'Fuel_Tank_Capacity (in mL)', 'Displacement':'Displacement (in cc)', 'ARAI_Certified_Mileage':'ARAI_Certified_Mileage (in km/L)'}, inplace = True)
-    
-    #making a copy of the data and storing it in df
-    df=microsoft_data.copy()
-    df.columns = [ (i + 1) for i in range(len(df.columns)) ]
-    #storing all the object datatype columns in df_obj
-    df_obj=df.select_dtypes(include = 'object')
-    
-    #fiiling all null values of object datatype column with mode
-    for i in df_obj:
-        df[i].fillna(df[i].mode()[0], inplace=True)
-        microsoft_data.iloc[:,i-1].fillna(microsoft_data.iloc[:,i-1].mode()[0], inplace=True)
-
-    #storing all the float datatype columns in df_obj
-    df_ft=df.select_dtypes(include = 'float64')
-
-    #fiiling all null values of float datatype column with mean
-    for i in df_ft:
-        df[i].fillna(df[i].mean(), inplace=True)
-        microsoft_data.iloc[:,i-1].fillna(microsoft_data.iloc[:,i-1].mode()[0], inplace=True)
-        
-        microsoft_data.info()
-        print(microsoft_data.head())
-        print(microsoft_data.describe())
-        return microsoft_data
+    return microsoft_data
 
 microsoft_data=data_analysis()
+
+#dropping the 1st unnamed column
+microsoft_data = microsoft_data.drop(microsoft_data.iloc[:,[0]], axis=1)
+#checking total null values in the data
+print(microsoft_data.isnull().sum())
+
+#dropping those columns which do not have 50% of data
+threshold = len(microsoft_data)*0.5
+microsoft_data.dropna(thresh=threshold, axis=1, inplace=True)
+#dropping the rows which do not have Company name
+microsoft_data = microsoft_data.dropna(subset=['Make'])
+
+#adding an extra column named Car
+microsoft_data['Car']=microsoft_data['Make']+' '+microsoft_data['Model']
+car = microsoft_data['Car']
+microsoft_data = microsoft_data.drop(columns=['Car'])
+microsoft_data.insert(loc=2, column='Car', value=car)
+    
+#cleaning data
+microsoft_data['Ex-Showroom_Price'] = microsoft_data['Ex-Showroom_Price'].str.replace('Rs. ','').str.replace(',','').astype(float)
+microsoft_data['Height'] = microsoft_data['Height'].str.replace(' mm','',regex=False).astype(float)
+microsoft_data['Length'] = microsoft_data['Length'].str.replace(' mm','',regex=False).astype(float)
+microsoft_data['Width'] = microsoft_data['Width'].str.replace(' mm','',regex=False).astype(float)
+microsoft_data['Wheelbase'] = microsoft_data['Wheelbase'].str.replace(' mm','',regex=False).astype(float)
+microsoft_data['Fuel_Tank_Capacity'] = microsoft_data['Fuel_Tank_Capacity'].str.replace(' litres','',regex=False).astype(float)
+microsoft_data['Displacement'] = microsoft_data['Displacement'].str.replace(' cc','',regex=False).astype(float)
+microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '9.8-10.0 km/litre','ARAI_Certified_Mileage'] = '10'
+microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '10kmpl km/litre','ARAI_Certified_Mileage'] = '10'
+microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '22.4-21.9 km/litre','ARAI_Certified_Mileage'] = '22.4'
+microsoft_data['ARAI_Certified_Mileage'] = microsoft_data['ARAI_Certified_Mileage'].str.replace(' km/litre','',regex=False).astype(float)
+microsoft_data['Basic_Warranty'] = microsoft_data['Basic_Warranty'].str.replace('(years/distance whichever comes first)','').str.replace('(Whichever comes earlier)','').str.replace('(whichever is earlier)','').str.replace('(whichever comes first)','')
+microsoft_data['Basic_Warranty']=microsoft_data['Basic_Warranty'].str.replace('(','').str.replace(')','')
+microsoft_data.rename(columns = {'Ex-Showroom_Price':'Ex-Showroom_Price (in Rs.)', 'Height':'Height (in mm)', 'Length':'Length (in mm)', 'Width':'Width (in mm)', 'Wheelbase':'Wheelbase (in mm)', 'Fuel_Tank_Capacity':'Fuel_Tank_Capacity (in mL)', 'Displacement':'Displacement (in cc)', 'ARAI_Certified_Mileage':'ARAI_Certified_Mileage (in km/L)'}, inplace = True)
+    
+#making a copy of the data and storing it in df
+df=microsoft_data.copy()
+df.columns = [ (i + 1) for i in range(len(df.columns)) ]
+#storing all the object datatype columns in df_obj
+df_obj=df.select_dtypes(include = 'object')
+    
+#fiiling all null values of object datatype column with mode
+for i in df_obj:
+    df[i].fillna(df[i].mode()[0], inplace=True)
+    microsoft_data.iloc[:,i-1].fillna(microsoft_data.iloc[:,i-1].mode()[0], inplace=True)
+
+#storing all the float datatype columns in df_obj
+df_ft=df.select_dtypes(include = 'float64')
+
+#fiiling all null values of float datatype column with mean
+for i in df_ft:
+    df[i].fillna(df[i].mean(), inplace=True)
+    microsoft_data.iloc[:,i-1].fillna(microsoft_data.iloc[:,i-1].mode()[0], inplace=True)
+        
+microsoft_data.info()
+print(microsoft_data.head())
+print(microsoft_data.describe())
+
+
 
 st.write('**Size** of the data set after cleaning and filling missing values: ',  microsoft_data.shape)
 
