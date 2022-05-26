@@ -12,9 +12,6 @@ st.set_page_config(page_title="Automotive Analysis",
                    layout="wide"
                    )
 
-#Inserting an image for the web app
-image= Image.open('logo.jpg')
-st.image(image)
 #Title & description of the web app
 st.title('Automotive Industry')
 st.markdown("""
