@@ -28,10 +28,7 @@ st.markdown("""
 @st.cache(suppress_st_warning=True)
 def data_analysis():
     #reading the csv file
-    #uploaded_file = st.file_uploader("Choose a file")
-    #if uploaded_file is not None:
     microsoft_data = pd.read_csv("cars_engage_2022.csv")
-        #st.write(microsoft_data)
     return microsoft_data
 
 microsoft_data=data_analysis()
