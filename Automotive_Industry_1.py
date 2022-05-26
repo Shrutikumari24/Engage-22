@@ -190,7 +190,7 @@ if check:
         ax.set_xlabel('Ex-Showroom Price')
         st.pyplot(fig)
         st.write('* According to the graph, the maximum car price ranges from **10 lakh** to **16 lakh**.')
-    nested_btn_2 = st.button('* Number of Doors in most of the Automobiles')
+    nested_btn_2 = st.button('Number of Doors in most of the Automobiles')
     if nested_btn_2:
         fig,ax = plt.subplots()
         sns.histplot(data=microsoft_data, x='Doors',bins=20, alpha=0.6, color='#f54242')
