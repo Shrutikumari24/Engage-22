@@ -181,7 +181,7 @@ if check:
         ax.set_xlabel('Fuel Type')
         st.pyplot(fig)
         st.write('* **600** Automobiles use petrol as their Fuel Type, and as we know, there are 1201 cars in the data. As a result, nearly **half** of all cars run on **_Petrol_**.')
-        st.write('The second most used Fuel Type is **Diesel**. Therefore, it can be deduced that most cars run on either **_Gas_** or **_Diesel_**.')
+        st.write('* The second most used Fuel Type is **Diesel**. Therefore, it can be deduced that most cars run on either **_Gas_** or **_Diesel_**.')
     nested_btn_1 = st.button('Show the range of Ex-Showroom Price')
     if nested_btn_1:
         fig,ax = plt.subplots()
