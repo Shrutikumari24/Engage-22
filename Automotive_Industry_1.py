@@ -206,17 +206,8 @@ if check:
         ax.set_ylabel('Body Type')
         st.pyplot(fig)
         st.write('* **SUVs** are the most common car body type, followed by **Hatchbacks** and **Sedans**.')
-    nested_btn_4 = st.button('Which Company produces maximum number of cars?')
+    nested_btn_4=st.button('Relation between Company and Car Ex-Showroom Price')
     if nested_btn_4:
-        df1 = microsoft_data[(microsoft_data['Make'].isin(['Honda', 'Hyundai', 'Mahindra', 'Maruti Suzuki', 'Tata', 'Toyota']))]
-        fig,ax = plt.subplots()
-        sns.countplot(data=df1, y='Make', color='#f54242')
-        ax.set_title('Frequency of Companies data')
-        ax.set_ylabel('Comapny')
-        st.pyplot(fig)
-        st.write('* **Maruti Suzuki** manufactures the most cars, followed by **Hyundai**, **Mahindra** and **Tata**.')
-    nested_btn_6=st.button('Relation between Company and Car Ex-Showroom Price')
-    if nested_btn_6:
         df3 = microsoft_data[(microsoft_data['Make'].isin(['Audi', 'Aston Martin', 'Bentley', 'BMW', 'Bulgatti', 'Ferrari', 'Jaguar', 'Lamborghini', 'Land Rover Rover', 'Lexus', 'Maserati', 'Porsche', 'Volvo']))]
         fig,ax = plt.subplots()
         sns.boxplot(data=df3, y='Make', x='Ex-Showroom_Price (in Rs.)');
@@ -225,19 +216,38 @@ if check:
         ax.set_xlabel('Ex-Showroom Price')
         st.pyplot(fig)
         st.write('* According to the graph, **Lamborghini, Bentley, and Ferrai** produce the most expensive cars, with prices exceeding **3 crore**.')
-    nested_btn_7=st.button('What is the Basic Warranty applied to Automobiles?')
-    if nested_btn_7:
+    nested_btn_5=st.button('What is the Basic Warranty applied to Automobiles?')
+    if nested_btn_5:
         fig,ax = plt.subplots()
         sns.countplot(data=microsoft_data, y='Basic_Warranty', alpha=0.6, color='#f54242')
         ax.set_title('Frequency of Warranty data')
         ax.set_ylabel('Warranty')
         st.pyplot(fig)
         st.write('* According to the graph, **2 Years/Unlimited Kms** is the most common Basic Warranty provided by the Companies')
+    nested_btn_6=st.button('Correlation between the different features of Automobile')
+    if nested_btn_6:
+        df_r=microsoft_data.copy()
+        c1=['Ex-Showroom_Price (in Rs.)', 'Displacement (in cc)', 'Cylinders', 'Fuel_Tank_Capacity (in mL)', 'Doors', 'ARAI_Certified_Mileage (in km/L)', 'Seating_Capacity', 'Number_of_Airbags']
+        df_r=df_r[c1]
+        fig,ax = plt.subplots(figsize=(15,10))
+        sns.heatmap(df_r.corr(), annot=True, fmt=".2f")
+        st.pyplot(fig)
+        st.write('* According to the plot, the **Ex-Showroom Price, Displacement, and Cylinders** is negatively correlated with **No. of Doors, Mileage and Seating Capacity**')
+        st.write('* The **Fuel Tank Capacity** is negatively correlated with **No. of Doors and Mileage**')
+        st.write('* The **No. of Doors** is also negatively correlated with **No. of Airbags**')
+        st.write('* The **Mileage** is also negatively correlated with the **Seating Capacity and No. of Airbags**')
+        st.write('* The **Seating Capacity** is also negatively correlated with **No. of Airbags**')
+    nested_btn_7=st.button('Pie Chart on the car production by different Companies')
+    if nested_btn_7:
+        fig= plt.figure(figsize=(15,10))
+        ax = fig.subplots()
+        microsoft_data.Make.value_counts().plot(ax=ax, kind='pie')
+        st.pyplot(fig)
+        st.write('* **Maruti Suzuki** manufactures the most cars, followed by **Hyundai**, **Mahindra** and **Tata**.')
 
 st.markdown('##')
 col3, col4=st.columns([2.2,1])
 col4.markdown("""
-            **_Application Made by_**
             * **Name:** Shruti Kumari
             * **Email:** skumari242000@gmail.com
             """)
