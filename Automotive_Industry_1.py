@@ -62,8 +62,11 @@ microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '9.8-10.0 km/litre',
 microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '10kmpl km/litre','ARAI_Certified_Mileage'] = '10'
 microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '22.4-21.9 km/litre','ARAI_Certified_Mileage'] = '22.4'
 microsoft_data['ARAI_Certified_Mileage'] = microsoft_data['ARAI_Certified_Mileage'].str.replace(' km/litre','',regex=False).astype(float)
-microsoft_data['Basic_Warranty'] = microsoft_data['Basic_Warranty'].str.replace('(years/distance whichever comes first)','').str.replace('(Whichever comes earlier)','').str.replace('(whichever is earlier)','').str.replace('(whichever comes first)','')
-microsoft_data['Basic_Warranty']=microsoft_data['Basic_Warranty'].str.replace('(','').str.replace(')','')
+microsoft_data['Basic_Warranty'] = microsoft_data['Basic_Warranty'].str.replace('(years/distance whichever comes first)','')
+microsoft_data['Basic_Warranty'] = microsoft_data['Basic_Warranty'].str.replace('(Whichever comes earlier)','')
+microsoft_data['Basic_Warranty'] = microsoft_data['Basic_Warranty'].str.replace('(','').str.replace(')','')
+microsoft_data['Basic_Warranty'] = microsoft_data['Basic_Warranty'].str.replace('(whichever is earlier)','')
+microsoft_data['Basic_Warranty'] = microsoft_data['Basic_Warranty'].str.replace('(whichever comes first)','')
 microsoft_data.rename(columns = {'Ex-Showroom_Price':'Ex-Showroom_Price (in Rs.)', 'Height':'Height (in mm)', 'Length':'Length (in mm)', 'Width':'Width (in mm)', 
                                  'Wheelbase':'Wheelbase (in mm)', 'Fuel_Tank_Capacity':'Fuel_Tank_Capacity (in mL)', 'Displacement':'Displacement (in cc)', 
                                  'ARAI_Certified_Mileage':'ARAI_Certified_Mileage (in km/L)'}, inplace = True)
