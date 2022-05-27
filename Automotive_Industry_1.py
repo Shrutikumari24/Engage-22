@@ -64,7 +64,9 @@ microsoft_data.loc[microsoft_data.ARAI_Certified_Mileage == '22.4-21.9 km/litre'
 microsoft_data['ARAI_Certified_Mileage'] = microsoft_data['ARAI_Certified_Mileage'].str.replace(' km/litre','',regex=False).astype(float)
 microsoft_data['Basic_Warranty'] = microsoft_data['Basic_Warranty'].str.replace('(years/distance whichever comes first)','').str.replace('(Whichever comes earlier)','').str.replace('(whichever is earlier)','').str.replace('(whichever comes first)','')
 microsoft_data['Basic_Warranty']=microsoft_data['Basic_Warranty'].str.replace('(','').str.replace(')','')
-microsoft_data.rename(columns = {'Ex-Showroom_Price':'Ex-Showroom_Price (in Rs.)', 'Height':'Height (in mm)', 'Length':'Length (in mm)', 'Width':'Width (in mm)', 'Wheelbase':'Wheelbase (in mm)', 'Fuel_Tank_Capacity':'Fuel_Tank_Capacity (in mL)', 'Displacement':'Displacement (in cc)', 'ARAI_Certified_Mileage':'ARAI_Certified_Mileage (in km/L)'}, inplace = True)
+microsoft_data.rename(columns = {'Ex-Showroom_Price':'Ex-Showroom_Price (in Rs.)', 'Height':'Height (in mm)', 'Length':'Length (in mm)', 'Width':'Width (in mm)', 
+                                 'Wheelbase':'Wheelbase (in mm)', 'Fuel_Tank_Capacity':'Fuel_Tank_Capacity (in mL)', 'Displacement':'Displacement (in cc)', 
+                                 'ARAI_Certified_Mileage':'ARAI_Certified_Mileage (in km/L)'}, inplace = True)
     
 #making a copy of the data and storing it in df
 df=microsoft_data.copy()
@@ -88,8 +90,6 @@ for i in df_ft:
 microsoft_data.info()
 print(microsoft_data.head())
 print(microsoft_data.describe())
-
-
 
 st.write('**Size** of the data set after cleaning and filling missing values: ',  microsoft_data.shape)
 
@@ -117,7 +117,9 @@ sel_col, disp_col=st.columns((1,2))
 
 #listing important features
 dF_selected_feature=df_selected_model.copy()
-c=['Ex-Showroom_Price (in Rs.)', 'Displacement (in cc)', 'Cylinders', 'Drivetrain', 'Fuel_Tank_Capacity (in mL)', 'Fuel_Type',  'Height (in mm)', 'Length (in mm)', 'Width (in mm)', 'Body_Type', 'Doors', 'ARAI_Certified_Mileage (in km/L)', 'Gears', 'Power', 'Torque', 'Seating_Capacity', 'Type', 'Wheelbase (in mm)', 'Number_of_Airbags']
+c=['Ex-Showroom_Price (in Rs.)', 'Displacement (in cc)', 'Cylinders', 'Drivetrain', 'Fuel_Tank_Capacity (in mL)', 'Fuel_Type',  'Height (in mm)', 'Length (in mm)', 
+   'Width (in mm)', 'Body_Type', 'Doors', 'ARAI_Certified_Mileage (in km/L)', 'Gears', 'Power', 'Torque', 'Seating_Capacity', 'Type', 'Wheelbase (in mm)', 
+   'Number_of_Airbags']
 df_selected_feature = dF_selected_feature[c]
 sel_col.subheader('List of Features')
 sel_col.write(df_selected_feature.columns)
@@ -209,7 +211,8 @@ if check:
         st.write('* **SUVs** are the most common car body type, followed by **Hatchbacks** and **Sedans**.')
     nested_btn_4=st.button('Relation between Company and Car Ex-Showroom Price')
     if nested_btn_4:
-        df3 = microsoft_data[(microsoft_data['Make'].isin(['Audi', 'Aston Martin', 'Bentley', 'BMW', 'Bulgatti', 'Ferrari', 'Jaguar', 'Lamborghini', 'Land Rover Rover', 'Lexus', 'Maserati', 'Porsche', 'Volvo']))]
+        df3 = microsoft_data[(microsoft_data['Make'].isin(['Audi', 'Aston Martin', 'Bentley', 'BMW', 'Bulgatti', 'Ferrari', 'Jaguar', 'Lamborghini', 
+                                                           'Land Rover Rover', 'Lexus', 'Maserati', 'Porsche', 'Volvo']))]
         fig,ax = plt.subplots()
         sns.boxplot(data=df3, y='Make', x='Ex-Showroom_Price (in Rs.)');
         ax.set_title('')
@@ -228,7 +231,8 @@ if check:
     nested_btn_6=st.button('Correlation between the different features of Automobile')
     if nested_btn_6:
         df_r=microsoft_data.copy()
-        c1=['Ex-Showroom_Price (in Rs.)', 'Displacement (in cc)', 'Cylinders', 'Fuel_Tank_Capacity (in mL)', 'Doors', 'ARAI_Certified_Mileage (in km/L)', 'Seating_Capacity', 'Number_of_Airbags']
+        c1=['Ex-Showroom_Price (in Rs.)', 'Displacement (in cc)', 'Cylinders', 'Fuel_Tank_Capacity (in mL)', 'Doors', 'ARAI_Certified_Mileage (in km/L)', 
+            'Seating_Capacity', 'Number_of_Airbags']
         df_r=df_r[c1]
         fig,ax = plt.subplots(figsize=(15,10))
         sns.heatmap(df_r.corr(), annot=True, fmt=".2f")
