@@ -121,7 +121,7 @@ c=['Ex-Showroom_Price (in Rs.)', 'Displacement (in cc)', 'Cylinders', 'Drivetrai
 df_selected_feature = dF_selected_feature[c]
 sel_col.subheader('List of Features')
 sel_col.write(df_selected_feature.columns)
-input_feature=disp_col.text_input('Type the Feature to see the distribution graph')
+input_feature=disp_col.text_input('Type the full Feature name from the given list to see the distribution graph')
 
 df_ft1=df_selected_feature.select_dtypes(include = 'float64')
 df_obj1=df_selected_feature.select_dtypes(include = 'object')
