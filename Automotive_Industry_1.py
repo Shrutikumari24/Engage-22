@@ -143,6 +143,7 @@ if input_feature=='ARAI_Certified_Mileage (in km/L)':
     ax2.set_xlabel('Mileage')
     ax2.set_ylabel('Power')
     col2.pyplot(fig1)
+    st.write('**Zoom-in** to view the graphs clearly')
 
 elif input_feature in df_ft1.columns:
     fig,ax = plt.subplots()
