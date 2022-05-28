@@ -176,7 +176,7 @@ elif input_feature in df_obj1.columns:
     st.write('**Zoom-in** to view the graphs clearly')
 
 st.markdown('##')
-st.write('For more Frequenty Asked Questions **CLICK** \'**_Yes_**\':')
+st.write('### For more Frequenty Asked Questions **CLICK** \'**_Yes_**\':')
 check = st.checkbox('Yes')
 if check:
     nested_btn=st.button('Which Fuel Type is used in most of the Automobiles?')
