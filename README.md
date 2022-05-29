@@ -8,7 +8,7 @@ The required libraries, along with their version names, are listed in the requir
 ###
 ## Python Libraries Documentation
 1. **MatplotLib**<br />
-    pip install matplotlib
+    [copy content="pip install matplotlib"]
 2. **NumPy**
     pip install numpy
 3. **Pandas**
