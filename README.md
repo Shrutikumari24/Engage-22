@@ -32,6 +32,7 @@ Therefore in order to run the application you have follow the steps below:
 ![image](https://user-images.githubusercontent.com/102343505/170865623-2acb5288-dd9d-49ce-adc6-37d6cbe551ad.png)
 3. Press ENTER
 <br />
-This will launch the application and connect you to a Streamlit-provided local host.<br />
-Thank You,
+This will launch the application and connect you to a Streamlit-provided local host.
+<br />
+Thank You,<br />
 Hope you like my project
