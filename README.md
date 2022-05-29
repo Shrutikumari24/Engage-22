@@ -5,7 +5,7 @@ Microsoft Engage '22 Project
 My name is Shruti Kumari, and my project is on challenge 2 to build an application that demonstrates how the Automotive Industry could harness data to make informed decisions. For my project, I made extensive use of Python libraries such as Numpy, Pandas, Matplotlib, and Seaborn. I built my web application using the Streamlit Library. I used the dataset available on the acehacker website. Following that, I worked on developing my project.
 ##
 The required libraries, along with their version names, are listed in the requirements.txt file, which has been uploaded to this repository. In addition, I have uploaded all of the files that I used while developing my application.
-##
+<br />
 ## Python Libraries Documentation
 1. **MatplotLib:**<br />
     pip install matplotlib
@@ -33,7 +33,6 @@ Therefore in order to run the application you have follow the steps below:
 3. Press ENTER
 <br />
 This will launch the application and connect you to a Streamlit-provided local host.
-<br />
-**Thank You,
-<br />
-Hope you like my project**
+###
+## Thank You,
+### Hope you like my Project.
