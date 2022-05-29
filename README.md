@@ -33,6 +33,7 @@ Therefore in order to run the application you have follow the steps below:
 3. Press ENTER
 <br />
 This will launch the application and connect you to a Streamlit-provided local host.
-###
-## How to run the Project
-##
+<br />
+**Thank You,
+<br />
+Hope you like my project**
