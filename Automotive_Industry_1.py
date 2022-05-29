@@ -1,3 +1,4 @@
+#importing the required Python Libraries
 import streamlit as st
 from PIL import Image
 import pandas as pd
@@ -174,7 +175,8 @@ elif input_feature in df_obj1.columns:
     ax1.set_xlabel('Ex-Showroom Price')
     col2.pyplot(fig1)
     st.write('**Zoom-in** to view the graphs clearly')
-
+    
+#Frequently Asked Questions Module
 st.markdown('##')
 st.write('### For more Frequenty Asked Questions **CLICK** \'**_Yes_**\':')
 check = st.checkbox('Yes')
@@ -253,6 +255,7 @@ if check:
         st.pyplot(fig)
         st.write('* **Maruti Suzuki** manufactures the most cars, followed by **Hyundai**, **Mahindra** and **Tata**.')
 
+#Displaying my name and email id
 st.markdown('##')
 col3, col4=st.columns([2.2,1])
 col4.markdown("""
